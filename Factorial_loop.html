@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factorial, Sum, and Average Calculator</title>
+<style>
+  body 
+  {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #9be2e8, #004e64);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .top-left-tab 
+	{
+	  position: fixed;    
+	  top: 15px;             
+	  left: 15px;            
+	  color: white;
+	  text-decoration: none; 
+	  font-weight: bold;
+	  font-size: 16px;
+	  border-bottom: 2px solid white; 
+	  padding-bottom: 2px;  
+	  z-index: 1000;
+	}
+  .container 
+  {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 350px;
+  }
+
+  h1 
+  {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  input 
+  {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  button 
+  {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  button:hover 
+  {
+    background-color: #357ABD;
+    transform: scale(1.05);
+  }
+
+  .result 
+  {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .result p 
+  {
+    background: #f7f9ff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  }
+</style>
+</head>
+<body>
+<a href="Homepage.html" class="top-left-tab">Home</a>
+<div class="container">
+  <h1>Loop Calculator</h1>
+  <input type="number" id="numberInput" placeholder="Enter a number (N)">
+  <br>
+  <button onclick="calculate()">Compute</button>
+
+  <div class="result" id="output"></div>
+</div>
+
+<script>
+function calculate() {
+  let n = parseInt(document.getElementById("numberInput").value);
+  let output = document.getElementById("output");
+
+  if (isNaN(n) || n < 1) {
+    output.innerHTML = "<p>⚠️ Please enter a valid positive integer.</p>";
+    return;
+  }
+
+  // Factorial using WHILE loop
+  let i = 1;
+  let factorial = 1;
+  while (i <= n) {
+    factorial *= i;
+    i++;
+  }
+
+  // Sum using DO WHILE loop
+  let j = 1;
+  let sum = 0;
+  do {
+    sum += j;
+    j++;
+  } while (j <= n);
+
+  // Average using FOR loop
+  let total = 0;
+  for (let k = 1; k <= n; k++) {
+    total += k;
+  }
+  let average = total / n;
+
+  // Display results
+  output.innerHTML = `
+    <p><b>Factorial (While Loop):</b> ${factorial.toLocaleString()}</p>
+    <p><b>Sum (Do While Loop):</b> ${sum}</p>
+    <p><b>Average (For Loop):</b> ${average.toFixed(2)}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
